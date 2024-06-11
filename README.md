@@ -3,29 +3,20 @@ Project of Bagautdin Nukhkadiev and Ignatio Calvin Hidayat for the course "Machi
 
 ## Overview
 The impact of Natural Language Processing (NLP) algorithms in predicting
-stock market prices, especially price shocks.
-
-Commodity price shocks are times when the prices for commodities have
-drastically increased or decreased over a short time. Typically, the stock market
-and economic performance are aligned. Thus, when the stock market is performing well, it is usually a function of a growing economy.
-
-Stock market declines have the potential to diminish wealth across personal
-and retirement investment portfolios. Consequently, individuals witnessing a depreciation in their portfolio value are inclined to curtail their expenditures. 
+stock market prices.
 
 With this project, we aim to develop a model that analyzes news headlines
-and predicts stock market crashes based on text data. Having such a model may
+and predicts stock market prices based on text data. Having such a model may
 help us anticipate the stock market movement to better manage our wealth and
 prepare for adverse economic events. We chose to work with NLP algorithms and
-fine-tune existing pre-trained LLMs, as classical autoregressive models show
-poor predictive capacity during price shocks. Using textual data as input such
+fine-tune existing pre-trained LLMs. Using textual data as input such
 as news headlines may help the model adjust its predictions to keep up with
-drastically changing trends. Aside from that, we used also analyzed the effects of sentiment analysis and moving averages as features used for prediction. The models are evaluated based on the root mean squared error (RMSE) of the predicted stock prices. 
+drastically changing trends. Aside from that, we also analyzed the effects of sentiment analysis and moving averages as features used for prediction. The models are evaluated based on the root mean squared error (RMSE) of the predicted stock prices. 
 
 ## Data
-
 The data is obtained from the Kaggle dataset [Daily News for Stock Market Prediction](https://www.kaggle.com/aaron7sun/stocknews). The dataset contains historical news headlines from Reddit WorldNews Channel and Dow Jones Industrial Average (DJIA) stock prices. The news headlines are from 2008 to 2016, and the stock prices are from 2008 to 2016. Combined_News_DJIA.csv contains the top 25 news headlines and the corresponding stock prices for each day. upload_DJIA_table.csv contains the stock prices for each day. 
 
-The project is divided into the following sections:
+The project is divided into the following notebooks:
 
 ## Notebooks
 
