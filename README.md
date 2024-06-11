@@ -39,7 +39,7 @@ Description: This notebook focuses on using a LSTM neural network to predict sto
 
 ### 3. Predicting Stock Prices with News Headlines without Looking Back at the Data
 Filename: `news_rnn.ipynb`
-Description: This notebook predicts stock prices using an LSTM neural network and financial news headlines which uses BERT embeddings. This uses the current news headlines and does not account for looking back at the previous stock prices and news headlines.
+Description: This notebook predicts stock prices using an LSTM neural network and financial news headlines which uses BERT embeddings. This uses the current news headlines and does not account for looking back at the previous stock prices and news headlines. It behaves poorly since it does not account for the data dependency, and it only uses current news headlines to predict the stock prices.
 
 ### 4. Predicting Stock Prices with News Headlines with Look Back
 Filename: `lookback_news_rnn.ipynb`
@@ -87,12 +87,6 @@ The table below shows the RMSE values for the training and testing data for each
 
 </center>   
 
-From the table, we can see that the `univariate` model has the lowest RMSE value for the testing data, indicating that it is the best performing model among all of the models. The `xgboost` model has the lowest RMSE value for the training data, but it has one of the highest RMSE value for the testing data, indicating that it may be overfitting the training data. The `lookback_xgboost` model has a lower RMSE value for the testing data compared to the `xgboost` model, indicating that the look back window helps improve the model's performance. The `news_rnn` model has the highest RMSE value for the testing data, indicating that it is the worst performing model among all of the models. The `lookback_news_rnn` model has a lower RMSE value for the testing data compared to the `news_rnn` model, indicating that the look back window helps improve the model's performance. The `sentiment_rnn` model has the highest RMSE value for the training data, indicating that it may be underfitting the training data. The `lookback_fasttext` model has a lower RMSE value for the testing data compared to the `univariate` model, indicating that the FastText embeddings may be a better choice than the BERT embeddings for this task.
- The `bert_MA` model has the lowest RMSE value for the training data, but it has the highest RMSE value for the testing data, indicating that it may be overfitting the training data.
-
-Having news ruin the data dependency, ultimately they act as noise for the data. The `univariate` model, which only uses the stock prices, performs the best among the models. This suggests that the stock prices themselves contain enough information to predict future stock prices, and the addition of news headlines does not significantly improve the model's performance. 
-
-
 | Notebooks 	        | Loss Graph 	                        | Test Predictions	                |
 |:---:	                |:---:	                                |:---:	                            |
 | univariate 	        | ![alt text](images/image-2.png) 	    | ![alt text](images/image-6.png)	|
@@ -103,4 +97,11 @@ Having news ruin the data dependency, ultimately they act as noise for the data.
 | lookback_news_rnn 	| ![alt text](images/image-1.png) 	    | ![alt text](images/image-7.png) 	|
 | sentiment_rnn 	    | ![alt text](images/image-4.png)       | ![alt text](images/image-9.png) 	|
 | lookback_fasttext 	| ![alt text](images/image-12.png) 	    | ![alt text](images/image-13.png) 	|
+
+### Discussion
+From the results, we can see that the `univariate` model has the lowest RMSE value for the testing data, indicating that it is the best performing model among all of the models. The `lookback_xgboost` model has a lower RMSE value for the testing data compared to the `xgboost` model, indicating that the look back window helps improve the model's performance. The `news_rnn` model has high RMSE value for the testing data, indicating that it is the worst performing model among all of the models, because it doesn't have access to the price data. The `lookback_news_rnn` model has a lower RMSE value for the testing data compared to the `news_rnn` model, indicating that the look back window helps improve the model's performance. The `sentiment_rnn` model has the highest RMSE value for the training data, indicating that it may be underfitting the training data. The `lookback_fasttext` model has a lower RMSE value for the testing data compared to the `univariate` model, indicating that the FastText embeddings may be a better choice than the BERT embeddings for this task.
+
+The news data can act as a tool to provide robustness to the prediction model by incorportating information that affects stock prices and also capturing the market sentiment, however, it can add noise to the feature set by being too abundant and not always relevant. The sentiment analysis can also be used to provide additional information about the market sentiment, but it may not always be accurate and can be subjective. Overall the fasttext embeddings and the univariate model performed equally well. 
+
+For future work, the model can be further improved by incorporating more features such as technical indicators, economic indicators, and other relevant data sources. The model can also be improved by tuning the hyperparameters of the model and using more sophisticated models such as transformers and deep learning models.
 
