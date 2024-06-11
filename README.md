@@ -29,9 +29,23 @@ Filename: `bert_MA.ipynb`
 Description: In this notebook, we predict stock prices using an LSTM neural network and financial news headlines which uses BERT embeddings. We use a look back window of 50 days of news headlines and stock prices to predict the next day's stock price in the training data and a 30 day window in the testing data. We also include a moving average of the stock prices of 10 days as an additional feature in the model.
 
 ## Results
+For our models, we used the root mean squared error (RMSE) as the evaluation metric. The RMSE is a measure of the differences between the predicted values and the actual values. It gives us an idea of how well the model is performing in terms of predicting the stock prices.
 
-| Notebooks          	| Train RMSE         	| Test RMSE          	|
-|--------------------	|--------------------	|--------------------	|
-| bert_MA            	| 10.83293233874024  	| 816.5899384610334  	|
-| lookback_news_rnn: 	| 15.457514085649745 	| 309.5794180019174  	|
-| univariate         	| 31.743497936455558 	| 164.36006533558697 	|
+The table below shows the RMSE values for the training and testing data for each of the models.
+
+<center>
+
+| Notebooks 	        | train RMSE 	        | test RMSE 	        |
+|:---:	                |:---:	                |:---:	                |
+| bert_MA 	            | 10.83293233874024 	| 816.5899384610334 	|
+| lookback_news_rnn 	| 15.457514085649745 	| 309.5794180019174 	|
+| univariate 	        | 31.743497936455558 	| 164.36006533558697 	|
+| news_rnn            	| 622.6200037110209  	| 741.4623210266183 	|
+
+</center>
+
+From the table, we can see that the `univariate` model has the lowest RMSE value for the testing data, indicating that it is the best performing model among the four. The `bert_MA` model has the lowest RMSE value for the training data, but it has the highest RMSE value for the testing data, indicating that it may be overfitting the training data.
+
+Having news ruin the data dependency, ultimately they act as noise for the data. The `univariate` model, which only uses the stock prices, performs the best among the models. This suggests that the stock prices themselves contain enough information to predict future stock prices, and the addition of news headlines does not significantly improve the model's performance.
+
+
