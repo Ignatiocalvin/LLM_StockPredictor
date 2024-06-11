@@ -22,40 +22,49 @@ The project is divided into the following notebooks:
 
 ### 1. FinGPT Sentiment Retrieval
 Filename: `retrieve_sentiment.ipynb`
+
 Description: This notebook demonstrates the use of a LLM, specifically FinGPT, to retrieve and analyze sentiments of financial news articles using the LangChain framework. We asked FinGPT to generate a sentiment score for each news headline in the dataset. The sentiment score ranges from -10 to 10, where -1 indicates a negative sentiment, 0 indicates a neutral sentiment, and 1 indicates a positive sentiment.
 
 ### 2. Univariate Model
 Filename: `univariate.ipynb`
+
 Description: This notebook focuses on using a LSTM neural network to predict stock prices based on a univariate time series.
 
 ### 3. Predicting Stock Prices with News Headlines without Looking Back at the Data
 Filename: `news_rnn.ipynb`
+
 Description: This notebook predicts stock prices using an LSTM neural network and financial news headlines which uses BERT embeddings. This uses the current news headlines and does not account for looking back at the previous stock prices and news headlines. It behaves poorly since it does not account for the data dependency, and it only uses current news headlines to predict the stock prices.
 
 ### 4. Predicting Stock Prices with News Headlines with Look Back
 Filename: `lookback_news_rnn.ipynb`
+
 Description: This notebook predicts stock prices using an LSTM neural network and financial news headlines which uses BERT embeddings. This uses a look back window of 50 days of news headlines and stock prices to predict the next day's stock price in the training data and a 30 day window in the testing data. The reason for a longer window is they provide more data points to learn from, allowing the model to capture long-term trends and dependencies.
 
 Stock market dynamics can change over time, so a shorter test window ensures the model is evaluated on its ability to adapt to the most recent market conditions.
 
 ### 5. Predicting Stock Prices with News Headlines with Look Back and Sentiment Analysis
 Filename: `sentiment_rnn.ipynb`
+
 Description: Here, aside from using the look back window of 50 days of news headlines embeddings and stock prices to predict the next day's stock price, we also include sentiment analysis of the news headlines using FinGPT. The sentiment analysis gives a score from the range -10 to 10, where -10 is the most negative sentiment and 10 is the most positive sentiment. This score is then used as an additional feature in the model. 
 
 ### 6. Predicting Stock Prices with News Headlines with Look Back and Moving Average
 Filename: `bert_MA.ipynb`
+
 Description: In this notebook, we predict stock prices using an LSTM neural network and financial news headlines which uses BERT embeddings. We use a look back window of 50 days of news headlines and stock prices to predict the next day's stock price in the training data and a 30 day window in the testing data. We also include a moving average of the stock prices of 10 days as an additional feature in the model.
 
 ### 7. Predicting Stock Prices with FastText Embeddings
 Filename: `lookback_fasttext.ipynb`
+
 Description: This notebook predicts stock prices using an LSTM neural network and financial news headlines which uses FastText embeddings. We use a look back window of 50 days of news headlines and stock prices to predict the next day's stock price in the training data and a 30 day window in the testing data. The FastText embeddings are used as an alternative to BERT embeddings.
 
 ### 8. Predicting Stock Prices with XGBoost
 Filename: `xgboost.ipynb`
+
 Description: This notebook predicts stock prices using an XGBoost model. The model uses the stock prices and news headlines as features to predict the stock prices. The model is trained on the training data and evaluated on the testing data.
 
 ### 9. Predicting Stock Prices with XGBoost with Look Back
 Filename: `lookback_xgboost.ipynb`
+
 Description: This notebook predicts stock prices using an XGBoost model. The model uses a look back window of 50 days of stock prices and news headlines as features to predict the next day's stock price in the training data and a 30 day window in the testing data. The model is trained on the training data and evaluated on the testing data.
 
 ## Results
